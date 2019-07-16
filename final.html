@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="OrbitControls.js"></script>
+    <title>Document</title>
+</head>
+<style>
+#container{
+    position:absolute;
+     width: 100%;
+     height: 100%;
+}
+</style>
+<body>
+    <div id='container'>
+
+    </div>
+    
+</body>
+</html>
+<script>
+const container=document.getElementById('container');
+const scene= new THREE.Scene();
+scene.background= new THREE.Color('grey');
+const camera =new THREE.PerspectiveCamera(45,container.clientWidth/container.clientHeight,0.01,100);
+camera.position.set(0,0,30);
+
+ var geometry= new THREE.CylinderGeometry(0.5,0.5,0.5,32);
+ var renderer= new THREE.WebGLRenderer({antialias:true});
+  
+var material =new THREE.MeshBasicMaterial({color:'red'});
+var  mesh= new THREE.Mesh(geometry,material);
+var controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+ 
+ 
+ for (var i=-8;i<2;i++){
+	mesh.rotation.set(90,0,0);
+		var circle =mesh.clone();
+		circle.position.set(i+2,3,0);
+	        
+		scene.add( circle );
+		}
+		for (var i=-6;i<=2;i++){
+			mesh.rotation.set(90,0,0);
+		var circle =mesh.clone();
+		circle.position.set(-i-3.5,i,0);        
+		scene.add( circle );
+		}
+		for (var i=-8;i<=2;i++){
+			mesh.rotation.set(90,0,0);
+		var circle =mesh.clone();
+		circle.position.set(4,-i-5,0);        
+		scene.add( circle );
+		}
+renderer.setSize(container.clientWidth,container.clientHeight);
+renderer.setPixelRatio(window.devicePixelratio);
+container.appendChild(renderer.domElement);
+renderer.render(scene,camera);
+
+function onWindowResize(){
+    console.log(container.clientWidth,container.clientHeight);
+cameraspects=container.clientWidth/container.clientHeight;// 
+camera.updateProjectionMatrix();
+renderer.setSize(container.clientWidth,container.clientHeight);
+}
+window.addEventListener("resize" ,onWindowResize);
+window.addEventListener("keyup" ,onKeyup);
+function animate(){
+    requestAnimationFrame(animate);
+     mesh.rotation.y+=0.05;
+    //  console.log('11');
+     controls.update();
+
+     
+     renderer.render(scene,camera);
+    
+}
+animate();
+
+function onKeyup(event){
+    switch(event.keyCode){
+        case 65: //a
+        mesh.position.x -=1;
+        break;
+        case 68: //d
+        mesh.position.x +=1;
+        break;
+        case 87: //w
+        mesh.position.y +=2;
+        break;
+        case 83: //s
+        mesh.position.y -=1;
+        break;
+    }
+}
+</script>
