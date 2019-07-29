@@ -1,2 +1,12 @@
-# trudomodel
-before running this clone this to your own local folder "https://github.com/mrdoob/three.js/"
+# Trudo
+##Table of Contents
+1.	Philosophy
+2.	Threejs
+3.	About Trudo
+4.	Application
+5.	Technology
+6.	User Interface
+7.	UI Architecture
+8.	Hosting
+9. Contributon
+
