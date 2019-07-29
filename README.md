@@ -27,6 +27,15 @@ Three.js includes the following features
 *	Objects: meshes, particles, sprites, lines, ribbons, bones and more - all with Level of Detail 
 *	Geometry: plane, cube, sphere, torus, 3D text and more; modifiers: lathe, extrude and tube
 *	Data loaders: binary, image, JSON and scene
+ ## About Trudo
+Trudo is basically a 3D game which sounds like ludo but it actually has different functionalities and feel. As the name suggests it can be played by atmost three players. It has triangular plane in which each player have their house from where they have to start their game. It is a variant of the traditional Ludo game.
+Key features of Trudo:
+a.	3 players can play together.
+b.	A player can come out of house if dice shows the value ‘1’.
+c.	On value ‘6’,no subsequent chance will be provided i.e. each player will have only one chance in all conditions and then it will shift to the next person even if the player rolls 6 or kill any other player.
+d.	Place with the house color will be a safe point and for others it will be killed i.e. no one can kill the token if it is in the house color and if token lands on the other house color,player need to start from the beginning.
+e.	First player to complete the triangle and back to home will be the winner.
+
 
 
 
