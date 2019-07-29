@@ -70,6 +70,8 @@ Our game consists of two pages
 1.	Front Page
 2.	Main Page
 ![image](https://user-images.githubusercontent.com/51993963/62038537-89f26e00-b213-11e9-8908-a3c1a608e6b1.png)
+<img width="933" alt="Untitled" src="https://user-images.githubusercontent.com/51993963/62039080-9925eb80-b214-11e9-814a-279f4ab9cdd4.png">
+
 
         
 
