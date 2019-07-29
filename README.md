@@ -59,10 +59,10 @@ The next thing we did is creating a Mesh. A mesh is an object that takes a geome
  
 
 ## User Interface
-The user interface of apps are important because that is how people interact with your product to achieve their needs and goals. Functionality and good visuals are important in establishing your brand and relationship with customers. A good UI makes it easier for your target audience to clearly see what your product is.
-In our project we did the following things to make our UI better.
-Firstly we created a 3D plane then with the use of BoxBufferGeometry we made a triangular shape on a triangular plane. Then added it to the scene. For making the background more attractive we put skybox in it to make it look like a sky. We integrated a 3D dice in it.
-We had 3 Avatars that work as players in this game so to make them them look more attractive we set different colors of them and different positions. The camera plays a very important role in this so to make it exact we set different camera coordinates. We also used LookAt which rotates the object to face a point in world space. All the coordinates of dice, avatar, box, scene, camera and triangle are fixed because they all are dependent on each other.
+The user interface of apps are important because that is how people interact with your product to achieve their needs and goals. Functionality and good visuals are important in establishing your brand and relationship with customers. A good UI makes it easier for your target audience to clearly see what your product is.<br>
+In our project we did the following things to make our UI better.<br>
+Firstly we created a 3D plane then with the use of BoxBufferGeometry we made a triangular shape on a triangular plane. Then added it to the scene. For making the background more attractive we put skybox in it to make it look like a sky. We integrated a 3D dice in it.<br>
+We had 3 Avatars that work as players in this game so to make them them look more attractive we set different colors of them and different positions. The camera plays a very important role in this so to make it exact we set different camera coordinates. We also used LookAt which rotates the object to face a point in world space. All the coordinates of dice, avatar, box, scene, camera and triangle are fixed because they all are dependent on each other.<br>
 
 
 
