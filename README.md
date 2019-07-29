@@ -69,6 +69,8 @@ We had 3 Avatars that work as players in this game so to make them them look mor
 Our game consists of two pages
 1.	Front Page
 2.	Main Page
+![image](https://user-images.githubusercontent.com/51993963/62038537-89f26e00-b213-11e9-8908-a3c1a608e6b1.png)
+
         
 
 
