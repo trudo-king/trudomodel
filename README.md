@@ -37,5 +37,18 @@ d.	Place with the house color will be a safe point and for others it will be kil
 e.	First player to complete the triangle and back to home will be the winner.
 
 
+## Application
+The game is developed using threejs and it has various applications .In our game we used threejs as a major part and created most of the things using threejs.
+1. Creating the scene – To actually be able to display anything with three.js, we need three things: scene, camera and renderer, so that we can render the scene with camera. 
+2. Creating the geometry - To create a cube, we used a BoxBufferGeometry.To create a triangle, we used Triangular Geometry. In addition to the geometry, we need a material to color it.We used MeshBasicMaterial,all materials take an object of properties which will be applied to them.
+The next thing we did is creating a Mesh. A mesh is an object that takes a geometry, and applies a material to it, which we then can insert to our scene, and move freely around.
+3. Texture Loader – Class for loading a texture. This uses the ImageLoader internally for loading files. Begin loading from the given URL and pass the fully loaded texture to onLoad.The method also returns a new texture object which can directly be used for material creation. If you do it this way, the texture may pop up in your scene once the respective loading is finished.
+4. GLTF Loader – glTF (GL Transmission Format) is an open format specification for efficient delivery and loading of 3D content. Assets may be provided either in JSON(.gltf) or binary(.glb)format.A glTF asset may deliver one or more scenes,includingmeshes,materials,textures,skins,skeletons,morph targets,animations,lights,and/or cameras.
+5. OBJ Loader – A Loader for loading a .obj resource. The OBJ file format is a simple data-format that represents 3D geometry in a human readable format as the position of each vertex, the UV position of each texture coordinate vertex, vertex normal, and the faces that makes each polygon defines as a list of vertices, and texture vertices.
+6. Sky Box – Static background is not usually what we want in a 3D scene. Instead we usually want some kind of skybox. A skybox is just that, box with sky drawn on it.We put the camera inside the box and it looks like there is a sky in the background.
+7. Orbit Control – Orbit Controls allow the camera to orbit around a target. To use this, as with all files in the directory, we included the file separately in our HTML.
+
+
+
 
 
