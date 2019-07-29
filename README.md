@@ -65,6 +65,14 @@ Firstly we created a 3D plane then with the use of BoxBufferGeometry we made a t
 We had 3 Avatars that work as players in this game so to make them them look more attractive we set different colors of them and different positions. The camera plays a very important role in this so to make it exact we set different camera coordinates. We also used LookAt which rotates the object to face a point in world space. All the coordinates of dice, avatar, box, scene, camera and triangle are fixed because they all are dependent on each other.<br>
 
 
+## UI Architecture
+Our game consists of two pages
+1.	Front Page
+2.	Main Page
+        
+
+
+
 
 
 
