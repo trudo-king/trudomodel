@@ -73,6 +73,21 @@ Our game consists of two pages
 <img width="933" alt="Untitled" src="https://user-images.githubusercontent.com/51993963/62039080-9925eb80-b214-11e9-814a-279f4ab9cdd4.png">
 
 
+## Hosting
+Web Hosting is a service that stores website’s data on the internet. We used 000webhost to host our game.<br>
+First we signed in on 000webhost.In our case we uploaded all the files and folder to the server to get the URL for our game.
+
+ 
+## Contributors
+1. Ankita Tripathi (Team Lead)
+2. Manali Sethi
+3. Garima Khandelwal
+4. Shreya Desai
+5. Harshit Mourya
+6. Nilesh Verma
+
+
+
         
 
 
