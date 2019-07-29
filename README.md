@@ -1,5 +1,5 @@
 # Trudo
-##Table of Contents
+## Table of Contents
 1.	Philosophy
 2.	Threejs
 3.	About Trudo
