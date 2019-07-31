@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trudo King</title>
+	<!-- Latest compiled and minified CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- jquery library -->
+
+
+
+<!-- local css file -->
+<link rel="stylesheet" type="text/css" href="style.css">
+<script>
+	$(document).ready(function(){
+		$("#playerYellow").focus(function(){
+			$("#playerImage").attr("src","images/yellowmodel.gif");
+
+		});
+		$("#playerRed").focus(function(){
+			$("#playerImage").attr("src","images/redmodel.gif");
+
+		});
+		$("#playerBlue").focus(function(){
+			$("#playerImage").attr("src","images/bluemodel.gif");
+
+		});
+	});
+		
+		</script>
+</head>
+<body>
+	
+		<script>
+				function play(){
+									var audio = document.getElementById("audio");
+									audio.play();
+							   }
+				function pause(){
+									var audio = document.getElementById("audio");
+									audio.pause();
+							   }
+							  
+				 </script>
+			  <div class="col-lg-12 col-sm-12 col-md-12">
+				<button type="button" class="btn btn-info btn-lg" onclick="play()"><span class="glyphicon glyphicon-volume-up"></span> </button>
+				<button type="button" class="btn btn-info btn-lg" onclick="pause()"><span class="glyphicon glyphicon-pause"></span> </button>
+				
+				  </div>
+			  <audio id="audio" src="three.js-dev\example\sounds\bgmusic.mp3" ></audio>
+	<h1 class="heading">Trudo!!</h1>
+	<!-- for popup -->
+	<!-- <div id="boxes">
+		<div id="dialog" class="window">
+		  <h2>Welcome to Trudo King!!</h2>
+		  <div id="popupfoot"> <a href="#" class="close agree">Enter into the game</a> </div>
+		</div>
+		<div id="mask"></div>
+	  </div> -->
+	  <!-- popup div over -->
+
+	<div class="container">
+		<div class="row">
+		<div class="options">
+		<div class="col-lg-12 col-sm-12 col-md-12">
+			<button class="index-button" data-toggle="modal" data-target="#myModal"><span>Start Game</span></button>
+		</div>
+		<div class="col-lg-12 col-sm-12 col-md-12">
+			<button class="index-button" data-toggle="modal" data-target="#options"><span>Options</span></button>
+		</div>
+		<div class="col-lg-12 col-sm-12 col-md-12 ">
+			<button class="index-button" data-toggle="modal" data-target="#instruc"><span>Instructions</span></button>
+		</div>
+		<div class="col-lg-12 col-sm-12 col-md-12">
+			<button class="index-button" data-toggle="modal" data-target="#help"><span>Help</span></button>
+		</div>
+		</div>
+		</div>
+
+		 <!-- Modal -->
+  
+	</div>
+<div class="modal bounceUp animated" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h4 class="modal-title">Profile</h4>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body-left">
+          	<input type="text" id="playerYellow" style="color: yellow; border-radius: 40px;" class="profile-name" class="profile1" placeholder="Enter 1st Player Name" name="name">
+			<input type="text" id="playerBlue" style="color: blue; border-radius: 40px;" class="profile-name" class="profile2"  placeholder="Enter 2nd Player Name" name="name">
+			<input type="text"  id="playerRed" style="color: red;border-radius: 40px;" class="profile-name"  class="profile3" placeholder="Enter 3rd Player Name" name="name"><br><br>
+			<div style="text-align: center;">
+			<a href="#" data-toggle="modal" data-target="#playinstruction" id="save" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-play"></span> </a>
+			<a href="#" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+			</div>
+			
+		</div>
+          <div class="modal-body-right">
+			  
+          	<img src=" " id="playerImage" class="img-responsive">
+          </div>&nbsp;
+        
+        
+      </div>
+    </div>
+  </div>
+  </div>
+
+<!-- Options Fileds -->
+
+  <div class="modal bounceUp animated" id="options" role="dialog">
+    <div class="modal-dialog modal-md ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Options</h4>
+        </div>
+        <div class="modal-body">
+			<button type="button" class="btn btn-info btn-lg" onclick="play()"><span class="glyphicon glyphicon-volume-up"></span> </button>
+			<button type="button" class="btn btn-info btn-lg" onclick="pause()"><span class="glyphicon glyphicon-pause"></span> </button>
+			<p><b>Turn background Music ON or OFF during your game by using above buttons.</b></p>
+		</div>
+         
+        <div class="modal-footer">
+			<a href="#" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- instructions field -->
+
+<div class="modal bounceUp animated" id="instruc" role="dialog">
+    <div class="modal-dialog modal-md ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Instructions</h4>
+        </div>
+        <div class="modal-body">
+			<ul>
+				<li>You can turn on/off the sound by using the button   at top left corner or by going through the options field .</li>
+				<li>You can have the game rules by going through the help field</li>
+				<li>You can start the game by going through start game field</li>
+			</ul>
+		</div>
+         
+        <div class="modal-footer">
+			<a href="#" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- help section -->
+<div class="modal bounceUp animated" id="help" role="dialog">
+    <div class="modal-dialog modal-md ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rules Of The Game</h4>
+        </div>
+        <div class="modal-body">
+			<ul>
+				<li>3 players can play together.</li>
+				<li>A player can come out of house if dice shows the value ‘1’.</li>
+				<li>On value ‘6’,no subsequent chance will be provided i.e. each player will have only one chance in all conditions and then it will shift to the next person even if the player rolls 6 or kill any other player.</li>
+				<li>Place with the house color will be a safe point and for others it will be killed i.e. no one can kill the token if it is in the house color and if token lands on the other house color,player need to start from the beginning.</li>
+				<li>First player to complete the triangle and back to home will be the winner.</li>
+			</ul>
+		</div>
+         
+        <div class="modal-footer">
+			<a href="#" class="btn btn-danger btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- for instruction before play -->
+<div class="modal bounceUp animated" id="playinstruction" role="dialog">
+<div class="modal-dialog modal-md "  role="dialog">
+	<div class="modal-content" style="background: black;">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"></button>
+		<h4 class="modal-title">Read Rules Carefully!!</h4>
+	  </div>
+	  <div class="modal-body">
+		  <ul>
+	  
+			  <li>A player can come out of house if dice shows the value ‘1’.</li><br>
+			  <li>On value ‘6’,no subsequent chance will be provided i.e. each player will have only one chance in all conditions and then it will shift
+				   to the next person even if the player rolls 6 or kill any other player.</li><br>
+			  <li>Place with the house color will be a safe point and for others it will be killed i.e. no one can kill the token if it is in the house 
+				  color and if token lands on the other house color,player need to start from the beginning</li><br>
+			  <li>First player to complete the triangle and back to home will be the winner</li><br>
+		  </ul>
+	  
+	  <div class="modal-footer" style="text-align: center;">
+		 <a href="gamecode.html"  class="btn btn-success btn-lg"><span class="glyphicon glyphicon-play"></span></a>
+		 
+		</div>
+	</div>
+  </div>
+</div>
+</div>
+</body>
+
+<script>
+// Check if the localStorage object exists
+if(localStorage){
+	$(document).ready(function(){
+		$("#save").click(function(){
+			// Get input name
+			var profile1 = $("#playerYellow").val();
+			var profile2 = $("#playerBlue").val();
+			var profile3 = $("#playerRed").val();
+			
+			// Store data
+    		sessionStorage.setItem("Profile1", profile1);
+			sessionStorage.setItem("Profile2", profile2);
+			sessionStorage.setItem("Profile3", profile3);
+			// alert("Your players is saved.");
+		});
+		
+	});
+} 
+// else{
+//     alert("Sorry, your browser do not support local storage.");
+// }
+</script>
+<!-- script for popup -->
+<!-- <script>
+$(document).ready(function() {	
+
+var id = '#dialog';
+	
+//Get the screen height and width
+var maskHeight = $(document).height();
+var maskWidth = $(window).width();
+	
+//Set heigth and width to mask to fill up the whole screen
+$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+//transition effect
+$('#mask').fadeIn(500);	
+$('#mask').fadeTo("slow",0.9);	
+	
+//Get the window height and width
+var winH = $(window).height();
+var winW = $(window).width();
+              
+//Set the popup window to center
+$(id).css('top',  winH/2-$(id).height()/2);
+$(id).css('left', winW/2-$(id).width()/2);
+	
+//transition effect
+$(id).fadeIn(2000); 	
+	
+//if close button is clicked
+$('.window .close').click(function (e) {
+//Cancel the link behavior
+e.preventDefault();
+
+$('#mask').hide();
+$('.window').hide();
+});
+
+//if mask is clicked
+$('#mask').click(function () {
+$(this).hide();
+$('.window').hide();
+});
+	
+}); -->
+
+
+</html>
