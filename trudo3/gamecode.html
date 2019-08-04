@@ -1,50 +1,27 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- 
-    ******Instructions****
-    You can add input box for testing purpose instead of dice.
-    
-
- -->
 <head>
 	<title>Trudo</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<!-- <link type="text/css" rel="stylesheet" href="main.css"> -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/libs/zepto.js"></script>
-	<script type="text/javascript" src="js/three.js"></script>
-	<script type="text/javascript" src="js/OrbitControls.js"></script>
-	<link rel="stylesheet" type="text/css" href="dice.css">
-    <link rel="stylesheet" type="text/css" href="gamestyle.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    
-	<script src="js/OBJLoader.js"></script>
-	<script src="js/DDSLoader.js"></script>
-	
-	<!-- <script src="/sky.js"></script> -->
-	<script src="js/GLTFLoader.js"></script>
-	
-	<script src="game.js"></script>
-	
+    <link rel="stylesheet" type="text/css" href="css/gamestyle.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-	<div id="info">
-        <!-- for testing purpose -->
-        <!-- <input type="text" id="dice"> 
-        <button id="diceclick">Enter</button>  -->
-        <!-- testing purpose ends -->
-	</div>
+	<div id="turn">
+	 	<h1 class="heading">Please rotate your device!</h1>
+ </div>
+	<div id="game-container">
+	<div id="info">	</div>
 
 	<!-- for showing player names -->
 	<div id="p1"></div>
 	<div id="p2"></div>
     <div id="p3"></div>
-    
+
     <!-- for view button -->
     <div class="btn-group" id="btnview">
             <button type="button" style="background: black;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -57,6 +34,8 @@
             </ul>
           </div>
     <!-- view button ends -->
+
+
 	<!-- for showing player names ends -->
 
     <!-- game over popup -->
@@ -67,13 +46,15 @@
         <button type="button" class="close" data-dismiss="modal"></button>
         <h4 class="modal-title">Game Over</h4>
         </div>
+    <center>
         <div class="modal-body">
         <p><b>Thanks for playing!</b></p>
         </div>
-        
+    </center>
+
         <div class="modal-footer">
-        <a href="index.html" class="btn btn-info btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>play Again</a>
-        </div>
+            <center><a href="index.html" class="btn btn-info btn-lg" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>play Again</a>
+        </div></center>
         </div>
         </div>
         </div>
@@ -83,28 +64,38 @@
 		<button type="button" class="btn btn-info btn-lg" onclick="pause()"><span class="glyphicon glyphicon-pause"></span> </button>
 		</div>
 	  <!-- sounds buttons ends -->
-		
-		  <audio id="audio" src="three.js-dev\example\sounds\bgmusic.mp3" ></audio>
-	<script >
-		// sound on and off starts
+
+		  <audio id="audio" src="media\sounds\bgmusic.mp3" ></audio>
+	</div>
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/three.js"></script>
+	<script type="text/javascript" src="js/OrbitControls.js"></script>
+	<script src="js/OBJLoader.js"></script>
+	<script src="js/DDSLoader.js"></script>
+	<script src="js/GLTFLoader.js"></script>
+
+
+<script >
 function play() {
     var audio = document.getElementById("audio");
     audio.play();
-}
+	}
 function pause() {
     var audio = document.getElementById("audio");
     audio.pause();
-}
-//sound on and off ends
+	}
+</script>
 
-	</script>
 <script type="module">
-import * as THREE from './three.js-dev/build/three.module.js';
-import { GLTFLoader } from './three.js-dev/example/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from './three.js-dev/example/jsm/controls/OrbitControls.js';
+import * as THREE from './js/threejs-core/three.module.js';
+import { GLTFLoader } from './js/threejs-core/GLTFLoader.js';
+import { OrbitControls } from './js/threejs-core/OrbitControls.js';
 
 var container, clock, mixer,mixer1,mixer2, actions, activeAction, previousAction;
-var camera, scene, renderer, model, model1, model2, num, firstchance = true, check = 1, controls, plane1;
+var camera, scene, renderer, model,dicecolor=1, model1, model2,mixer22, num, firstchance = true, check = 1, controls, plane1;
 var flag = false;
 var flag1 = false;
 var flag2 = false;
@@ -113,7 +104,6 @@ var totalSteps2 = 0;
 var totalSteps3 = 0;
 var targetRotation = 0;
 var targetRotationX = 0;
-var DiceMaterials = [];
 var x1, x2, x3, y1, y2, y3, z1, z2, z3;
 x1 = 0, y1 = 0.8, z1 = -43;
 x2 = 38.3, y2 = 0.8, z2 = 28;
@@ -143,15 +133,15 @@ function init() {
 
     $(document).ready(function(){
         $("#topview").click(function(){
-            
+
             camera.position.set(0, 100,30);
         });
         $("#sideview").click(function(){
-            
+
             camera.position.set(1, 35, 75);
         });
         $("#cornerview").click(function(){
-            
+
             camera.position.set(-80, 45,55);
         });
     });
@@ -166,7 +156,7 @@ function init() {
     controls.enableZoom=false;
 
     // lights
-    var light = new THREE.HemisphereLight(0xffffff, 0x444444);
+    var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1);
     light.position.set(0, 20, 0);
     scene.add(light);
     light = new THREE.DirectionalLight(0xffffff);
@@ -180,31 +170,9 @@ function init() {
     grid.material.opacity = 0.8;
     grid.material.transparent = false;
     // scene.add(grid);
-
-
-    // New Dice...
-
-    // $(document).on('click', function(e){aRoll();});
-
-    for (var i = 1; i < 7; i++) {
-    DiceMaterials.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('assets/textures/d6_' + i + '.png'), overdraw: true }));
-    }
-    var dieMat = new THREE.MeshFaceMaterial(DiceMaterials);
-    var dieGeo = new THREE.CubeGeometry(5, 5, 5, 5, 5, 5);
-    die = new THREE.Mesh(dieGeo, dieMat);
-    die.position.set(0, 5, 0);
-    scene.add(die);
-
-    var geometry = new THREE.PlaneGeometry(5, 5);
-    geometry.applyMatrix(new THREE.Matrix4().makeRotationX(- Math.PI / 2));
-
-
-    var material = new THREE.MeshBasicMaterial({ color: '#241c13' });
-
-    plane1 = new THREE.Mesh(geometry, material);
-    plane1.position.y = 0;
-	scene.add(plane1);
-	// new dice added
+    //dice geometry
+    playerDice(1);
+    // dice function
 
 	// for declaring first chance
     if (firstchance) {
@@ -212,7 +180,7 @@ function init() {
         circlebase.position.set(0, 2, -43);
         firstchance = false;
 	}
-	
+
     workenvironment();
     modelloader(0, 0.8, -43, 1);
     modelloader3(-38.3, 0.8, 28, 3);
@@ -222,7 +190,7 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
     window.addEventListener('resize', onWindowResize, false);
-   
+
 }
 // init ends
 
@@ -232,32 +200,31 @@ $(document).ready(function () {
 	// for dice click
     $("canvas").on('click', function(e){
 		aRoll();
-	
-	// // for personal input
-    // var dice = $("#diceclick");
-    // dice.click(function () {
-    //     num = $("#dice").val();
-    //     console.log(num);
-	   
+
+
 	// for checking chance
        switch (check) {
             case 1: {
+                playerDice(1);
                 ModelActive1();
                 setTimeout(function () {
                 modelplacecheck1();
                 modal1PlaceKiller();
                 chanceSet2();
+
                 check++;
+
                 console.log("case1active");
                 if (totalSteps2 >= 43) {
                     check = 3;
                     chanceSet3();
                 }
+                dicecolor=check;
             },200*num);
                 break;
             }
             case 2: {
-               
+                playerDice(2);
                 ModelActive2();
                 setTimeout(function () {
                 modelplacecheck2();
@@ -269,10 +236,12 @@ $(document).ready(function () {
                     check = 1;
                     chanceSet1();
                 }
+                dicecolor=check;
             },200*num);
                 break;
             }
             case 3: {
+                playerDice(3);
                 ModelActive3();
                 setTimeout(function () {
                 modelplacecheck3();
@@ -283,6 +252,7 @@ $(document).ready(function () {
                     check = 2;
                     chanceSet2();
                 }
+                dicecolor=check;
                 console.log("case3active");
                 },200*num);
                 break;
@@ -296,6 +266,8 @@ $(document).ready(function () {
 // events for dice click ends
 
 function ModalAction1() {
+    // mixer22=new THREE.AnimationMixer( model );
+
     if (x1 >= 0 && z1 < 28) {
         x1 = x1 + 2.3;
         z1 = z1 + 4.5;
@@ -389,10 +361,11 @@ function animate() {
     if (mixer) mixer.update(dt);
     if (mixer1) mixer1.update(dt);
     if (mixer2) mixer2.update(dt);
+    if (mixer22) mixer22.update(dt);
     requestAnimationFrame(animate);
     controls.update();
 
-    renderer.render(scene, camera); 
+    renderer.render(scene, camera);
 }
 // animate function ends
 
@@ -400,11 +373,11 @@ function animate() {
 function modelloader(a, b, c, position) {
     // model
     var loader = new GLTFLoader();
-    loader.load('three.js-dev/example/models/gltf/RobotExpressive/RobotExpressive.gltf', function (gltf) {
+    loader.load('media/RobotExpressive/RobotExpressive.gltf', function (gltf) {
         if (position == 1) {
             model = gltf.scene;
             mixer = new THREE.AnimationMixer( model );
-			mixer.clipAction( gltf.animations[6] ).setDuration( 3 ).play();
+			mixer.clipAction( gltf.animations[4] ).setDuration( 3 ).play();
             model.position.set(a, b, c);
             model.lookAt(0, 0, 0);
             x1 = a; y1 = b; z1 = c;
@@ -417,12 +390,12 @@ function modelloader(a, b, c, position) {
 }
 function modelloader2(a, b, c, position) {
     var loader = new GLTFLoader();
-    loader.load('three.js-dev/example/models/gltf/RobotExpressive/RoboticExpressiveBlue.gltf', function (gltf) {
+    loader.load('media/RobotExpressive/RoboticExpressiveBlue.gltf', function (gltf) {
 
         if (position == 2) {
             model1 = gltf.scene;
             mixer1 = new THREE.AnimationMixer( model1 );
-			mixer1.clipAction( gltf.animations[6] ).setDuration( 3 ).play();
+			mixer1.clipAction( gltf.animations[4] ).setDuration( 3 ).play();
             model1.position.set(a, b, c);
             model1.lookAt(0, 0, 0);
             x2 = a; y2 = b; z2 = c;
@@ -436,12 +409,12 @@ function modelloader2(a, b, c, position) {
 }
 function modelloader3(a, b, c, position) {
     var loader = new GLTFLoader();
-    loader.load('three.js-dev/example/models/gltf/RobotExpressive/RobotExpressiveRed.gltf', function (gltf) {
+    loader.load('media/RobotExpressive/RobotExpressiveRed.gltf', function (gltf) {
 
         if (position == 3) {
             model2 = gltf.scene;
             mixer2 = new THREE.AnimationMixer( model2 );
-			mixer2.clipAction( gltf.animations[6] ).setDuration( 3 ).play();
+			mixer2.clipAction( gltf.animations[4] ).setDuration( 3 ).play();
             model2.position.set(a, b, c);
             model2.lookAt(0, 0, 0);
             x3 = a; y3 = b; z3 = c;
@@ -460,26 +433,32 @@ function ModelActive1() {
     for (var n = 1; n <= num; n++) {
         (function (n) {
         setTimeout(function () {
+
         if (num == 1 && flag == false && totalSteps1 == 0) {
             flag = true;
+            jumpsound();
             console.log("first cehk");
             x1 = 0; y1 = 0.8; z1 = -35; console.log("Z=" + z1);
             model.position.set(x1, y1, z1);
             totalSteps1++;
-           
+
+
         }
         else if (flag == true && totalSteps1 != 43) {
+            // mixer22.clipAction( gltf.animations[6] ).setDuration( 3 ).play();
+            jumpsound();
             ModalAction1();
             totalSteps1++;
             if (totalSteps1 == 43 && totalSteps1 > totalSteps3 && totalSteps1 > totalSteps2) {
-                alert("1st Winner:: Model 1");
+                // alert("1st Winner:: Model 1");
+
                 model.position.set(0, 0.8, -43);
                 x1 = 0; y1 = 0.8; z1 = -43;
                 // scene.remove(model);
             }
             if (totalSteps1 == 43 && (totalSteps2 == 43 || totalSteps3 == 43)) {
                 x1 = 0; y1 = 0.8; z1 = -43;
-                alert("2nd Winner:: Model 1");
+                // alert("2nd Winner:: Model 1");
                 gameover.style.display="block";
             }
 
@@ -487,7 +466,7 @@ function ModelActive1() {
         }
     }, 190*n);
   })(n);
-    
+
     }
 
 }
@@ -495,61 +474,67 @@ function ModelActive2() {
     for (var n = 1; n <= num; n++) {
         (function (n) {
         setTimeout(function () {
+
         if (num == 1 && flag1 == false && totalSteps2 == 0) {
             flag1 = true;
+            jumpsound();
             x2 = 32.2; y2 = 0.8; z2 = 28;
             model1.position.set(x2, y2, z2);
             totalSteps2++;
-           
+
 
         }
         else if (flag1 == true && totalSteps2 != 43) {
+            jumpsound();
             ModalAction2();
             totalSteps2++;
             if (totalSteps2 == 43 && totalSteps2 > totalSteps1 && totalSteps2 > totalSteps3) {
                 model1.position.set(38.3, 0.8, 28);
                 x2 = 38.3; y2 = 0.8; z2 = 28;
-                alert("1st Winner:: Model 2");
+                alert("1st Winner::" + ' ' + pro2);
             }
             if (totalSteps2 == 43 && (totalSteps1 == 43 || totalSteps3 == 43)) {
                 model1.position.set(38.3, 0.8, 28);
                 x2 = 38.3; y2 = 0.8; z2 = 28;
-                alert("2nd Winner:: Model 2");
+                alert("2nd Winner::" + ' ' + pro2);
                 gameover.style.display="block";
             }
         }
     }, 190*n);
   })(n);
-   
+
     }
 
 }
 
 function ModelActive3() {
-    
+
     for (var n = 1; n <= num; n++) {
         (function (n) {
         setTimeout(function () {
+
         if (num == 1 && flag2 == false && totalSteps3 == 0) {
             flag2 = true;
+            jumpsound();
             x3 = -32.2; y3 = 0.8; z3 = 28;
             model2.position.set(x3, y3, z3);
             console.log(model2.position);
             totalSteps3++;
-           
+
         }
         else if (flag2 == true && totalSteps3 != 43) {
+            jumpsound();
             ModalAction3();
             totalSteps3++;
             if (totalSteps3 == 43 && totalSteps3 > totalSteps1 && totalSteps3 > totalSteps2) {
                 model2.position.set(-38.3, 0.8, 28);
                 x3 = -38.3; y3 = 0.8; z3 = 28;
-                alert("1st Winner:: Model 3");
+                alert("1st Winner::" + ' ' + pro3);
 
             }
             if (totalSteps3 == 43 && (totalSteps1 == 43 || totalSteps2 == 43)) {
                 x3 = -38.3; y3 = 0.8; z3 = 28;
-                alert("2nd Winner:: Model 3");
+                alert("2nd Winner::" + ' ' + pro3);
 
                 gameover.style.display="block";
             }
@@ -565,11 +550,10 @@ function ModelActive3() {
 // for checking th killing place of others
 function modelplacecheck1() {
     if (Math.floor(x1) == Math.floor(x2) && y1 == y2 && z1 == z2 && Math.ceil(x1)!=-16 && z1 != -3.5) {
-        alert("Model-2 Killed");
         x2 = 38.3; y2 = 0.8; z2 = 28;
        model1.position.set(x2, y2, z2);
         console.log("model-2 killed");
-        alert("Model-2 Killed");
+        alert(pro2 + "Killed");
         flag1 = false;
 
         totalSteps2 = 0;
@@ -578,7 +562,7 @@ function modelplacecheck1() {
         x3 = -38.3; y3 = 0.8; z3 = 28;
          model2.position.set(x3, y3, z3);
         console.log("model-3 killed");
-        alert("Model-3 Killed");
+        alert(pro3 + "Killed");
         flag2 = false;
 
         totalSteps3 = 0;
@@ -589,7 +573,7 @@ function modelplacecheck2() {
         x1 = 0; y1 = 0.8; z1 = -43;
         model.position.set(x1, y1, z1);
         console.log("model-1 killed");
-        alert("Model-1 Killed");
+        alert(pro1 + "Killed");
         flag = false;
 
         totalSteps1 = 0;
@@ -598,7 +582,7 @@ function modelplacecheck2() {
         x3 = -38.3; y3 = 0.8; z3 = 28;
         model2.position.set(x3, y3, z3);
         console.log("model-3 killed");
-        alert("Model-3 Killed");
+        alert(pro3 + "Killed");
         flag2 = false;
         totalSteps3 = 0;
     }
@@ -608,7 +592,7 @@ function modelplacecheck3() {
         x2 = 38.3; y2 = 0.8; z2 = 28;
         model1.position.set(x2, y2, z2);
         console.log("model-2 killed");
-        alert("Model-2 Killed");
+        alert(pro2 + "Killed");
         flag1 = false;
 
         totalSteps2 = 0;
@@ -617,7 +601,7 @@ function modelplacecheck3() {
         x1 = 0; y1 = 0.8; z1 = -43;
          model.position.set(x1, y1, z1);
         console.log("model-1 killed");
-        alert("Model-1 Killed");
+        alert(pro1 + " Killed");
         flag = false;
         totalSteps1 = 0;
     }
@@ -630,7 +614,7 @@ function modal1PlaceKiller() {
         x1 = 0; y1 = 0.8; z1 = -43;
         model.position.set(x1, y1, z1);
         console.log("model-1 killed");
-        alert("Model-1 Killed");
+        alert(pro1 + "Killed");
         flag = false;
         totalSteps1 = 0;
     }
@@ -640,7 +624,7 @@ function modal2PlaceKiller() {
         x2 = 38.3; y2 = 0.8; z2 = 28;
          model1.position.set(x2, y2, z2);
         console.log("model-2 killed");
-        alert("Model-2 Killed");
+        alert(pro2 + "Killed");
         flag1 = false;
 
         totalSteps2 = 0;
@@ -651,7 +635,7 @@ function modal3PlaceKiller() {
         x3 = -38.3; y3 = 0.8; z3 = 28;
          model2.position.set(x3, y3, z3);
         console.log("model-3 killed");
-        alert("Model-3 Killed");
+        alert(pro3 + "Killed");
         flag2 = false;
         totalSteps3 = 0;
     }
@@ -836,7 +820,7 @@ function workenvironment() {
             cube33.position.set(-31.5 + (4.5 * box), 0, 28);
         }
 	}
-	
+
     var stpos1 = standingpos1.clone();
     var stpos2 = standingpos2.clone();
     var stpos3 = standingpos3.clone();
@@ -850,14 +834,33 @@ function workenvironment() {
 	scene.add(stpos3);
 	// path generation ends
 
+	// trying something
+	var customsceneno = Math.floor(Math.random() * 2);
+	if (customsceneno == "0"){
+		var customscene ="skybox";
+	}
+	if (customsceneno == "1"){
+		var customscene ="Park3Med";
+	}
+
+
+
+
+
+	// END Here
+
+
+
 	// skybox for 360 view
     let materialArray = [];
-    let texture_ft = new THREE.TextureLoader().load('assets/environment/Park3Med/posx.jpg');
-    let texture_bk = new THREE.TextureLoader().load('assets/environment/Park3Med/negx.jpg');
-    let texture_up = new THREE.TextureLoader().load('assets/environment/Park3Med/posy.jpg');
-    let texture_dn = new THREE.TextureLoader().load('assets/environment/Park3Med/negy.jpg');
-    let texture_rt = new THREE.TextureLoader().load('assets/environment/Park3Med/posz.jpg');
-    let texture_lf = new THREE.TextureLoader().load('assets/environment/Park3Med/negz.jpg');
+		var customscene = ["Bridge2","Park2","Park3Med","skybox","SwedishRoyalCastle"];
+		var customscene = customscene[Math.floor(Math.random()*customscene.length)];
+		var texture_ft = new THREE.TextureLoader().load('media/images/scene/'+customscene+'/posx.jpg');
+    var texture_bk = new THREE.TextureLoader().load('media/images/scene/'+customscene+'/negx.jpg');
+    var texture_up = new THREE.TextureLoader().load('media/images/scene/'+customscene+'/posy.jpg');
+    var texture_dn = new THREE.TextureLoader().load('media/images/scene/'+customscene+'/negy.jpg');
+    var texture_rt = new THREE.TextureLoader().load('media/images/scene/'+customscene+'/posz.jpg');
+    var texture_lf = new THREE.TextureLoader().load('media/images/scene/'+customscene+'/negz.jpg');
 
     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_ft }));
     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_bk }));
@@ -871,15 +874,19 @@ function workenvironment() {
     let skyboxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
     let skybox = new THREE.Mesh(skyboxGeo, materialArray);
     scene.add(skybox);
+    let light2 = new THREE.AmbientLight( 0x404040, ); // soft white light
+// light2.position.set(0,10,0)
+scene.add( light2 );
 }
 // skybox ends
 
 
 // New Dice
 function aRoll() {
-//note: pi = 180 deg
+//note: pi = 180
+dicesound();
 console.log('you clicked the roll button');
-num = Math.floor((Math.random()*6)+1);
+ num = Math.floor((Math.random()*6)+1);
 console.log(num);
 
 $('#log').append('<br>' + num);
@@ -917,28 +924,109 @@ function renderDice() {
     die.rotation.x += (targetRotationX - die.rotation.x) * 0.10;
     //die.rotation.y += ( targetRotationX - die.rotation.x ) * 0.05;
 }
+function playerDice(dicecolor) {
+    var DiceMaterialRed = [];
+var DiceMaterialBlue = [];
+var DiceMaterialYellow = [];
+// New Dice...
+
+    // $(document).on('click', function(e){aRoll();});
+
+    for (let i = 1; i < 7; i++) {
+    DiceMaterialYellow.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('media/images/dice/yellow/' + i + '.png'), overdraw: true }));
+    DiceMaterialBlue.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('media/images/dice/blue/' + i + '.png'), overdraw: true }));
+    DiceMaterialRed.push(new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('media/images/dice/red/' + i + '.png'), overdraw: true }));
+    }
+    switch(dicecolor){
+        case 1:
+        var dieMat = new THREE.MeshFaceMaterial(DiceMaterialYellow);
+        scene.remove(plane1);
+        scene.remove(die);
+        break;
+        case 2:
+        var dieMat = new THREE.MeshFaceMaterial(DiceMaterialBlue);
+        scene.remove(plane1);
+        scene.remove(die);
+        break;
+        case 3:
+        var dieMat = new THREE.MeshFaceMaterial(DiceMaterialRed);
+        scene.remove(plane1);
+        scene.remove(die);
+        break;
+
+    }
+    // var dieMat = new THREE.MeshFaceMaterial(DiceMaterialYellow);
+    var dieGeo = new THREE.CubeGeometry(5, 5, 5, 5, 5, 5);
+    die = new THREE.Mesh(dieGeo, dieMat);
+    die.position.set(0, 5, 0);
+    scene.add(die);
+
+    var geometry = new THREE.PlaneGeometry(5, 5);
+    geometry.applyMatrix(new THREE.Matrix4().makeRotationX(- Math.PI / 2));
+
+
+    var material = new THREE.MeshBasicMaterial({ color: '#241c13' });
+
+    plane1 = new THREE.Mesh(geometry, material);
+    plane1.position.y = 0;
+	scene.add(plane1);
+	// new dice added
+
+
+}
+function dicesound(){
+    var listener = new THREE.AudioListener();
+camera.add( listener );
+
+// create a global audio source
+var sound = new THREE.Audio( listener );
+
+// load a sound and set it as the Audio object's buffer
+var audioLoader = new THREE.AudioLoader();
+audioLoader.load( 'media/sounds/dicesound.mp3', function( buffer ) {
+	sound.setBuffer( buffer );
+	sound.setLoop( false );
+	sound.setVolume(1 );
+	sound.play();
+});
+
+}
+function jumpsound(){
+    var listener2 = new THREE.AudioListener();
+camera.add( listener2 );
+
+// create a global audio source
+var sound2 = new THREE.Audio( listener2 );
+
+// load a sound and set it as the Audio object's buffer
+var audioLoader = new THREE.AudioLoader();
+audioLoader.load( 'media/sounds/jump.wav', function( buffer ) {
+	sound2.setBuffer( buffer );
+	sound2.setLoop( false );
+	sound2.setVolume(0.8 );
+	sound2.play();
+});
+}
 
 </script>
 
 <script>
 	$(document).ready(function(){
 		var profile1=document.getElementById("p1");
-	   pro1=sessionStorage.getItem("Profile1");
+	    pro1=sessionStorage.getItem("Profile1");
 		profile1.innerHTML="Player 1 " + "<br>" + pro1;
 
 		var profile2=document.getElementById("p2");
-	   pro2=sessionStorage.getItem("Profile2");
+	    pro2=sessionStorage.getItem("Profile2");
 		profile2.innerHTML="Player 2 " + "<br>" + pro2;
 
 		var profile3=document.getElementById("p3");
-	   pro3=sessionStorage.getItem("Profile3");
+	    pro3=sessionStorage.getItem("Profile3");
 		profile3.innerHTML="Player 3 " + "<br>" + pro3;
-		   // Retrieve data
-		   // alert("Hi, "  + sessionStorage.getItem("Profile1") + " " + sessionStorage.getItem("Profile2") + " " + sessionStorage.getItem("Profile3"));
 	   });
-   
+
 </script>
 
-</body>
+
 
 </html>
